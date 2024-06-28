@@ -36,16 +36,16 @@
 
 
         <div class="admin-login">
-            <form action="backend.php">
+            <form id="admin-form" >
                 <div class="title">Admin Login</div>
                 <div class="input-container">
                     <div class="input-div">
                         <div>Enter email</div>
-                        <input type="email" name="email" />
+                        <input type="email" name="email" class="email-id" required />
                     </div>
                     <div  class="input-div">
                         <div>Password</div>
-                        <input type="password" name="password" />
+                        <input type="password" name="password" class="password" required/>
                     </div>
                     <div class="submit">
                         <input type="submit" name="submit">
@@ -58,16 +58,16 @@
       
 
         <div class="user-login">
-            <form action="backend.php">
+            <form id="user-form" >
                 <div class="title">User Login</div>
                 <div class="input-container">
                     <div class="input-div">
                         <div>Enter email</div>
-                        <input type="email" name="email" />
+                        <input type="email" name="email" class="email-id" required/>
                     </div>
                     <div  class="input-div">
                         <div>Password</div>
-                        <input type="password" name="password" />
+                        <input type="password" name="password" class="password"  required/>
                     </div>
                     <div class="submit">
                         <input type="submit" name="submit">
@@ -82,29 +82,29 @@
 
 
         <div class="user-register">
-            <form action="backend.php">
+            <form id="user-register-form">
                 <div class="title">User Register</div>
                 <div class="input-container">
                     <div class="input-div">
                         <div>Enter Name</div>
-                        <input type="text" name="email" />
+                        <input type="text" name="email" class="user-name" required/>
                     </div>
                     <div class="input-div">
                         <div>Mobile Phone</div>
-                        <input type="tel" name="mobile_no" />
+                        <input type="tel" name="mobile_no" required/>
                     </div>
 
                     <div class="input-div">
                         <div>Email</div>
-                        <input type="email" name="email" />
+                        <input type="email" name="email" class="email-id" required/>
                     </div>
                     <div  class="input-div">
                         <div>Password</div>
-                        <input type="password" name="password" />
+                        <input type="password" name="password" class="password" required/>
                     </div>
                     <div class="gender">
                         <div>Gender</div>
-                        <select id="gender" name="gender">
+                        <select class="gender" name="gender"  required> 
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                             <option value="Other">Other</option>
