@@ -122,21 +122,21 @@ body{
     background-size: cover; /* This makes sure the image covers the entire area */
     background-repeat: no-repeat; /* Prevents the background image from repeating */
     display: flex;
-    flex-direction: column;
-    align-items: center;
+     
+    justify-content: center;
 }
 
 
-#book-table-container
+
+#category-table-container
 {
-    
-    overflow-y:scroll;
+    overflow-y: auto;
     background-color: #5363b4;
     height: 600px;
     width: 1200px;
     margin-top: 20px;
 }
-#book-table
+#category-table
 {
     
 
@@ -151,139 +151,20 @@ table, th ,td {
   }
 
 
-#book-table th
+#category-table th
 { background-color: rgba(30, 30, 30, 0.6);
    height: 40px;
     font-size: 20px;
 }
-#book-table  tr 
+#category-table  tr 
 {
    height: 30px;
 }
 
-#book-table  tr :hover
+#category-table  tr :hover
 {
     background-color: rgba(0, 0, 0, 0.2);
 }
-
-#add-book
-{
-    background-color: green;
-    margin-left: 10px;
-    height: 50px;
-    width: 200px;
-    border-radius: 5px;
-    border: white 1px solid;
-    cursor: pointer;
-    font-size: 25px;
-    color: white;
-}
-
-#add-book:hover{
-    background-color: rgb(1, 71, 1);
-}
-
-
-
-
-
-
-
-
-
-#form-container
-{ 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: inherit;
-    
-}
-
-#update-book-information
-{ 
-    display: none;
-  width:90%;
-  margin: auto;
-  
-
-}
-
-#update-book-information .take-input
-{
-   width: 99%;
-    display: block;
-    height: 35px;
-    border-radius: 5px;
-    border: none;
-    margin-top: 5px;
-    margin-bottom: 20px;
-    font-size: 16px;
-}
-
-#update-book-information #submit_form_btn
-{
-    background-color: green;
-    float: right;
-    height: 35px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    color: white;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
-#update-book-information #submit_form_btn:hover
-{
-    background-color: rgb(1, 108, 1);
-    
-}
-
-
-#add-book-form
-{ 
-    display: none;
-  width:90%;
-margin: auto;
-
-}
-
-
-#add-book-form .take-input
-{
-    
-   width: 99%;
-    display: block;
-    height: 35px;
-    border-radius: 5px;
-    border: none;
-    margin-top: 5px;
-    margin-bottom: 20px;
-    font-size: 16px;
-}
-#add-book-form #submit_book_btn
-{
-    background-color: green;
-    float: right;
-    height: 35px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    color: white;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
-#add-book-form #submit_book_btn:hover
-{
-    background-color: rgb(1, 108, 1);
-    
-}
-
-
 
 
 
