@@ -1,5 +1,30 @@
 
 
+let admin_log_out_btn=document.querySelector("#admin-log-out-btn");
+
+admin_log_out_btn.addEventListener("click",()=>
+    {
+     
+        window.location.href = "index.html"; 
+        
+    })
+
+ let goto_dashboard_btn=document.querySelector("#goto-dashboard");
+
+    goto_dashboard_btn.addEventListener("click",()=>
+        {
+            window.location.href = "admin_dashboard.html"; 
+        })
+
+
+
+
+
+
+
+
+
+
 const books = [
   { name: "OOP", category: "programming", price: 30, author: "Robert C. Martin", isbn: "123" },
   { name: "python", category: "AI", price: 36, author: "Stuart Russell", isbn: "234" },
@@ -7,8 +32,19 @@ const books = [
 ];
 
 
-function createElement_of_form()
-{
+
+
+
+function openForm(bookToUpdate) {
+  let input_form = document.querySelector("#update-book-information");
+  input_form.style.display = "block";
+
+  input_form.innerHTML="";
+
+  let heading = document.createElement('h1');
+  heading.innerText="Update Book Information";
+  heading.style.textAlign="center";
+
   let booknameInput = document.createElement('input');
   booknameInput.className="take-input";
   booknameInput.type = 'text';
@@ -40,26 +76,18 @@ function createElement_of_form()
 
   
   // Append input fields to form or wherever needed
-  
+  input_form.append(heading);
+  input_form.append("Name");
   input_form.append(booknameInput);
+  input_form.append("Category");
   input_form.append(bookcategoryInput);
+  input_form.append("Price");
   input_form.append(bookpriceInput);
+  input_form.append("Author");
   input_form.append(bookAuthorInput);
   input_form.append(submit_form_btn);
 
-}
 
-
-
-function openForm(bookToUpdate) {
-  let input_form = document.querySelector("#update-book-information");
-  input_form.style.display = "block";
-  
-
-  createElement_of_form();
-
-   let submit_form_btn=document.querySelector("#submit_form_btn");
-   
   // let submit_form_btn = document.querySelector("#submit_form_btn");
   submit_form_btn.addEventListener('click', function(event) {
     event.preventDefault();
@@ -72,7 +100,7 @@ function openForm(bookToUpdate) {
     alert("book ubdated sucessfully");
     input_form.style.display="none";
     const bookTable = document.querySelector("#book-table");
-    bookTable.style.display='block';
+    bookTable.style.display='table';
 
     updateDisplay();
 
@@ -98,7 +126,9 @@ function deleteBook(isbn) {
 function updateBook(isbn) {
   let index = books.findIndex(book => book.isbn === isbn);
   if (index !== -1) {
+
     let bookToUpdate = books[index];
+    
     openForm(bookToUpdate);
    
   }

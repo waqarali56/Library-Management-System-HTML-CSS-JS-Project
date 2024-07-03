@@ -140,7 +140,7 @@ body{
     
 
     background-color: rgba(77, 77, 74, 0.6);
-    width: inherit;
+    width: 100%;
 
    
 }
@@ -167,22 +167,58 @@ table, th ,td {
 
 
 
-#update-book-information
-{
-    display: none;
+
+
+
+
+
+
+#form-container
+{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
 }
 
+#update-book-information
+{ 
+    display: none;
+  width:90%;
+  
 
+}
 
 #update-book-information .take-input
 {
+   width: 99%;
     display: block;
-    width: 98%;
     height: 35px;
     border-radius: 5px;
     border: none;
     margin-top: 5px;
+    margin-bottom: 20px;
     font-size: 16px;
+}
+
+#update-book-information #submit_form_btn
+{
+    background-color: green;
+    float: right;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#update-book-information #submit_form_btn:hover
+{
+    background-color: rgb(1, 108, 1);
+    
 }
 
 

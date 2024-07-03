@@ -17,10 +17,4 @@ admin_log_out_btn.addEventListener("click",()=>
 
 
 
-    let goto_dashboard_btn=document.querySelector("#goto-dashboard");
-
-    goto_dashboard_btn.addEventListener("click",()=>
-        {
-            window.location.href = "admin_dashboard.html"; 
-        })
-
+   
