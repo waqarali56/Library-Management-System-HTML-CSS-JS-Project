@@ -6,38 +6,61 @@ const books = [
   { name: "React", category: "programming", price: 28, author: "Kirupa Chinnathambi", isbn: "890" }
 ];
 
-function openForm(bookToUpdate) {
-  let input_form = document.querySelector("#update-book-information");
-  input_form.style.display = "inline-block";
 
-  
+function createElement_of_form()
+{
   let booknameInput = document.createElement('input');
+  booknameInput.className="take-input";
   booknameInput.type = 'text';
   booknameInput.placeholder = bookToUpdate.name;
+  booknameInput.value=bookToUpdate.name;
 
   let bookcategoryInput = document.createElement('input');
+  bookcategoryInput.className="take-input";
   bookcategoryInput.type = 'text';
   bookcategoryInput.placeholder = bookToUpdate.category;
+  bookcategoryInput.value=bookToUpdate.category;
 
   let bookpriceInput = document.createElement('input');
+  bookpriceInput.className="take-input";
   bookpriceInput.type = 'number';
   bookpriceInput.placeholder = bookToUpdate.price;
+  bookpriceInput.value=bookToUpdate.price;
 
   let bookAuthorInput = document.createElement('input');
+  bookAuthorInput.className="take-input";
   bookAuthorInput.type = 'text';
   bookAuthorInput.placeholder = bookToUpdate.author;
+  bookAuthorInput.value=bookToUpdate.author;
 
+  let submit_form_btn = document.createElement('button');
+  submit_form_btn.textContent = "Update Book";
+  submit_form_btn.id = "submit_form_btn";
+      
 
   
   // Append input fields to form or wherever needed
   
-  input_form.prepend(booknameInput);
-  input_form.prepend(bookcategoryInput);
-  input_form.prepend(bookpriceInput);
-  input_form.prepend(bookAuthorInput);
+  input_form.append(booknameInput);
+  input_form.append(bookcategoryInput);
+  input_form.append(bookpriceInput);
+  input_form.append(bookAuthorInput);
+  input_form.append(submit_form_btn);
+
+}
 
 
-  let submit_form_btn = document.querySelector("#submit_form_btn");
+
+function openForm(bookToUpdate) {
+  let input_form = document.querySelector("#update-book-information");
+  input_form.style.display = "block";
+  
+
+  createElement_of_form();
+
+   let submit_form_btn=document.querySelector("#submit_form_btn");
+   
+  // let submit_form_btn = document.querySelector("#submit_form_btn");
   submit_form_btn.addEventListener('click', function(event) {
     event.preventDefault();
     bookToUpdate.name = booknameInput.value;
