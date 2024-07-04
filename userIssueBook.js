@@ -1,13 +1,8 @@
 
 
+let user_log_out_btn=document.querySelector("#user-log-out-btn");
 
-import { books, categories, authors } from './source.js';
-
-
-
-let admin_log_out_btn=document.querySelector("#admin-log-out-btn");
-
-admin_log_out_btn.addEventListener("click",()=>
+user_log_out_btn.addEventListener("click",()=>
     {
      
         window.location.href = "index.html"; 
@@ -18,41 +13,23 @@ admin_log_out_btn.addEventListener("click",()=>
 
     goto_dashboard_btn.addEventListener("click",()=>
         {
-            window.location.href = "admin_dashboard.html"; 
+            window.location.href = "user_dashboard.html"; 
         })
-
-        let goto_registered_users_btn =document.querySelector("#goto-registered-Users")
-        goto_registered_users_btn.addEventListener("click", () => {
-            
-            window.location.href = "registerUser.html";
-        });
     
         let goto_book_btn =document.querySelector("#goto-book")
         goto_book_btn.addEventListener("click", () => {
             
-            window.location.href = "book.html";
+            window.location.href = "displayBookUser.html";
         });
 
 
         let goto_issued_btn =document.querySelector("#goto-issue-book")
         goto_issued_btn.addEventListener("click", () => {
             
-            window.location.href = "book_issued.html";
+            window.location.href = "userIssueBook.html";
         });
 
-        let goto_category_btn =document.querySelector("#goto-category")
-    goto_category_btn.addEventListener("click", () => {
-        
-        window.location.href = "Category.html";
-    });
-   
-    
-
-    let goto_author_btn =document.querySelector("#goto-author")
-    goto_author_btn .addEventListener("click", () => {
-        
-        window.location.href = "Author.html";
-    });
+      
     
 
 
@@ -63,17 +40,18 @@ admin_log_out_btn.addEventListener("click",()=>
 
 
 
+        import { books, categories, authors } from './source.js';
+  
  
-  
-
-
-
-
-
-issued_Book_Display();
-  
-  function issued_Book_Display()
-  {
+        
+        
+        
+        
+        
+        issued_Book_Display();
+        
+        function issued_Book_Display()
+        {
     const bookTable = document.querySelector("#book-table");
   
   bookTable.innerHTML = ''; // Clear previous content
@@ -82,19 +60,20 @@ issued_Book_Display();
   <th>ISBN</th>
   <th>Book Name</th>
   <th>Category</th>
-            <th>Price</th>
+  <th>Price</th>
             <th>Author</th>
             <th>IssueDate</th>
             </tr>`;
 
   books.forEach(book => {
-
-    if(book.issBook.issueStatus===true)
-      {
-      const bookRow = document.createElement('tr');
-        
-      let data1 = document.createElement('td');
-      let data2 = document.createElement('td');
+      
+      
+      if(book.issBook.issueStatus===true)
+        {
+            const bookRow = document.createElement('tr');
+            
+            let data1 = document.createElement('td');
+            let data2 = document.createElement('td');
       let data3 = document.createElement('td');
       let data4 = document.createElement('td');
       let data5 = document.createElement('td');
@@ -115,12 +94,12 @@ issued_Book_Display();
       bookRow.appendChild(data4);
       bookRow.appendChild(data6);
       bookTable.appendChild(bookRow);
+      
+    }
 
-      }
+    
+});
+}
 
 
-    });
-  }
-  
-  
 // Initial display update

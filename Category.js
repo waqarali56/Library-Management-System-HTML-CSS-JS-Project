@@ -1,19 +1,18 @@
-const categories = [
-          
-    "Frontend Development",
-    "Backend Development",
-    "Data Management",
-    "Functional Programming",
-    "Object-Oriented Programming (OOP)",
-    "Security",
-    
-];
 
 
+
+
+
+import { 
+  books, 
+  categories, 
+  authors,
+  createInput,
+} from './source.js';
 
 
 function openAddCategoryForm() {
-
+  
     let input_addCategory_form = document.querySelector("#add-category-form");
     input_addCategory_form.style.display = "block";
     
@@ -23,32 +22,37 @@ function openAddCategoryForm() {
     heading.innerText="Add New Category";
     heading.style.textAlign="center";
     
-    let categorynameInput = document.createElement('input');
-    categorynameInput.className="take-input";
-    categorynameInput.type = 'text';
-    categorynameInput.required = true;
-    categorynameInput.placeholder="Enter Name";
-  
-  
+    let inputObject1={
+      type:'input',
+      className:'take-input',
+      placeholder:"Enter Name",
+      required:true
+    }
+    let categorynameInput = createInput(inputObject1);
+    
     
     
     let submit_category_btn = document.createElement('button');
     submit_category_btn.textContent = "Submit Category";
     submit_category_btn.id = "submit_category_btn";
     
+    const elements = [
+      heading,
+      "Name", categorynameInput,
+      submit_category_btn
+    ];
+    
+    elements.forEach(el => {
+      if (typeof el === 'string') {
+        input_addCategory_form.appendChild(document.createTextNode(el));
+      } else {
+        input_addCategory_form.appendChild(el);
+      }
+    });
+    
+   
     
     
-    // Append input fields to form or wherever needed
-    input_addCategory_form.append(heading);
-    input_addCategory_form.append("Name");
-    input_addCategory_form.append(categorynameInput);
-  
-    input_addCategory_form.append(submit_category_btn);
-  
-    
-  
-  
-  
     
     
     
@@ -59,8 +63,8 @@ function openAddCategoryForm() {
    
       
      
-        categories.push(categorynameInput.value);
-        
+      categories.push(categorynameInput.value);
+      
       alert("Category added sucessfully");
       input_addCategory_form.style.display="none";
       const bookTable = document.querySelector("#category-table");
