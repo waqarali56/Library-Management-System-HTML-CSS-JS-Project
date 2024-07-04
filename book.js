@@ -2,6 +2,7 @@
 
 
 
+
 import { 
   books, 
   categories, 
@@ -9,6 +10,7 @@ import {
   createInput, 
   createSelect,
 } from './source.js';
+
 
 
 
@@ -261,6 +263,47 @@ admin_log_out_btn.addEventListener("click",()=>
     
 
 
+    
+ function displayBookDetail(isbn){
+  const bookdetailDiv = document.querySelector("#book-detail");
+  bookdetailDiv.style.display="block";
+  let index = books.findIndex(b => b.isbn === isbn);
+  if (index !== -1) {
+  
+    
+    let book=books[index];
+    bookdetailDiv .innerHTML = ''; // Clear previous content
+    
+    
+   let bookname=document.createElement('h1');
+   bookname.style.textAlign='center';
+    bookname.innerText=book.name;
+
+    let bookdetail=document.createElement('div');
+    bookdetail.innerText="LastTime Borrow : " + book.description.lasttimeborrow;
+    bookdetail.style.textAlign='center';
+    let detail=document.createElement('div');
+
+    detail.textContent=book.description.detail;
+    detail.style.textAlign='center';
+   
+
+    let endl=document.createElement('br');
+
+    
+    
+  
+    bookdetailDiv.appendChild(bookname);
+    bookdetailDiv.appendChild(endl);
+    bookdetailDiv.appendChild(bookdetail);
+    bookdetailDiv.appendChild(detail)
+    
+  }
+            
+  
+   
+}
+
 
 
 
@@ -328,20 +371,38 @@ function updateDisplay() {
       deleteBtn.innerText = "Delete";
       updateBtn.innerText="Update";
       
-      deleteBtn.addEventListener('click',()=>{                    // why it is not working when directly write deleteBook function
-        deleteBook(book.isbn)});                  
+      deleteBtn.addEventListener('click',(e)=>{ 
+                           // why it is not working when directly write deleteBook function
+        deleteBook(book.isbn)
+        e.stopPropagation();
+      });                  
         
-        updateBtn.addEventListener("click",()=>
+        updateBtn.addEventListener("click",(e)=>
           {
             bookTable.style.display = 'none';
             let add_book_btn = document.querySelector("#add-book");
-            add_book_btn.style.display='none';
+                  add_book_btn.style.display='none';
+           
+            const bookdetailDiv = document.querySelector("#book-detail");
+    bookdetailDiv.style.display="none";
+            
             updateBook(book.isbn);
+            e.stopPropagation();
         })
         
         actionCell.appendChild(deleteBtn);
       actionCell.appendChild(updateBtn);
       
+     bookRow.addEventListener("click",()=>
+    {
+      bookTable.style.display = 'none';
+      let add_book_btn = document.querySelector("#add-book");
+            add_book_btn.style.display='none';
+     
+      displayBookDetail(book.isbn);
+     
+    })
+
       bookRow.appendChild(data5);
       bookRow.appendChild(data1);
       bookRow.appendChild(data2);
@@ -364,6 +425,8 @@ function updateDisplay() {
     const bookTable = document.querySelector("#book-table");
     bookTable.style.display="none";
     add_book_btn.style.display='none';
+    const bookdetailDiv = document.querySelector("#book-detail");
+    bookdetailDiv.style.display="none";
  
     openAddBookForm();
   })

@@ -250,6 +250,11 @@ margin: auto;
 
 }
 
+#book-detail
+{
+    display: none;
+}
+
 
 #add-book-form .take-input
 {
