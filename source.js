@@ -25,6 +25,42 @@ export const authors = [
     
 ];
 
+export const users = [
+  {
+      name: "John Doe",
+      CNIC:"34109-958899-9",
+      mobilePhone: "123-456-7890",
+      email: "johndoe@example.com",
+      password: "password123",
+      gender: "male"
+  },
+  {
+       name: "Jane Smith",
+      CNIC:"31609-958899-9",
+      mobilePhone: "098-765-4321",
+      email: "janesmith@example.com",
+      password: "password456",
+      gender: "female"
+  },
+  {
+
+      name: "Sam Johnson",
+      CNIC:"31109-958899-9",
+      mobilePhone: "555-555-5555",
+      email: "samjohnson@example.com",
+      password: "password789",
+      gender: "male"
+  },
+  {
+      name: "Emily Brown",
+      CNIC:"34509-958899-9",
+      mobilePhone: "444-444-4444",
+      email: "emilybrown@example.com",
+      password: "password101",
+      gender: "female"
+  }
+];
+
 
 export const books = [
     { 
@@ -120,69 +156,34 @@ export const books = [
 
 
 
-export const createInputForUpdate = (type, className, placeholder, value,required )=> {
-    const input = document.createElement(type);
-    input.className = className;
-    input.placeholder = placeholder;
-    input.value = value;
-    input.required=required;
+export const createInput = (object)=> {
+    const input = document.createElement(object.type);
+    input.className = object.className;
+    input.placeholder = object.placeholder;
+    input.required=object.required;
     return input;
   };
 
 
-  export const createSelectForUpdate= (className, options, placeholder, value,required ) => {
+  export const createSelect= (object ) => {
     const select = document.createElement('select');
-    select.className = className;
-    options.forEach(optionValue => {
+    select.className = object.className;
+
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.textContent = 'Select an option'; 
+    select.appendChild(defaultOption);
+
+    object.options.forEach(optionValue => {
       const Option = document.createElement('option');
       Option.value = optionValue;
       Option.textContent = optionValue;
       select.appendChild(Option);
     });
-    select.required=required;
-    select.placeholder = placeholder;
-    select.value = value;
+    select.required=object.required;
+
     return select;
   };
 
 
 
-  export const createInputForAddBook = (type, className, placeholder, required) => {
-    const input = document.createElement(type);
-    input.className = className;
-    input.placeholder = placeholder;
-    input.required = required;
-    return input;
-  };
-
-  export const createSelectForAddBook = (className, options, required) => {
-    const select = document.createElement('select');
-    select.className = className;
-    options.forEach(optionValue => {
-      const option = document.createElement('option');
-      option.value = optionValue;
-      option.textContent = optionValue;
-      select.appendChild(option);
-    });
-    select.required = required;
-    return select;
-  };
-
-
-  export const createInputForAddCategory = (type, className, placeholder, required) => {
-    const input = document.createElement(type);
-    input.className = className;
-    input.placeholder = placeholder;
-    input.required = required;
-    return input;
-  };
-
- 
-
-  export const  createInputForAddAuthor = (type, className, placeholder, required) => {
-    const input = document.createElement(type);
-    input.className = className;
-    input.placeholder = placeholder;
-    input.required = required;
-    return input;
-  };

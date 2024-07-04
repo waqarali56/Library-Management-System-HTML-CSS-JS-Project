@@ -1,4 +1,8 @@
 
+import { books, categories, authors,users } from './source.js';
+
+
+
 let admin_log_out_btn=document.querySelector("#admin-log-out-btn");
 
 admin_log_out_btn.addEventListener("click",()=>
@@ -52,42 +56,7 @@ admin_log_out_btn.addEventListener("click",()=>
 
 
 
-        const users = [
-            {
-                name: "John Doe",
-                CNIC:"34109-958899-9",
-                mobilePhone: "123-456-7890",
-                email: "johndoe@example.com",
-                password: "password123",
-                gender: "male"
-            },
-            {
-                 name: "Jane Smith",
-                CNIC:"31609-958899-9",
-                mobilePhone: "098-765-4321",
-                email: "janesmith@example.com",
-                password: "password456",
-                gender: "female"
-            },
-            {
-
-                name: "Sam Johnson",
-                CNIC:"31109-958899-9",
-                mobilePhone: "555-555-5555",
-                email: "samjohnson@example.com",
-                password: "password789",
-                gender: "male"
-            },
-            {
-                name: "Emily Brown",
-                CNIC:"34509-958899-9",
-                mobilePhone: "444-444-4444",
-                email: "emilybrown@example.com",
-                password: "password101",
-                gender: "female"
-            }
-        ];
-
+      
 
 
         function deleteBook(cnic) {

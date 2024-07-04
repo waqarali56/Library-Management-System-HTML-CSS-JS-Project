@@ -6,12 +6,9 @@ import {
   books, 
   categories, 
   authors,
-  createInputForUpdate, 
-  createSelectForUpdate,
-  createInputForAddBook,
-  createSelectForAddBook 
+  createInput, 
+  createSelect,
 } from './source.js';
-
 
 
 
@@ -22,28 +19,28 @@ let admin_log_out_btn=document.querySelector("#admin-log-out-btn");
 
 admin_log_out_btn.addEventListener("click",()=>
     {
-     
+      
         window.location.href = "index.html"; 
         
-    })
+      })
+      
+      let goto_dashboard_btn=document.querySelector("#goto-dashboard");
 
- let goto_dashboard_btn=document.querySelector("#goto-dashboard");
-
-    goto_dashboard_btn.addEventListener("click",()=>
+      goto_dashboard_btn.addEventListener("click",()=>
         {
             window.location.href = "admin_dashboard.html"; 
-        })
+          })
 
-        let goto_registered_users_btn =document.querySelector("#goto-registered-Users")
-        goto_registered_users_btn.addEventListener("click", () => {
+          let goto_registered_users_btn =document.querySelector("#goto-registered-Users")
+          goto_registered_users_btn.addEventListener("click", () => {
             
             window.location.href = "registerUser.html";
-        });
-    
+          });
+          
         let goto_book_btn =document.querySelector("#goto-book")
         goto_book_btn.addEventListener("click", () => {
-            
-            window.location.href = "book.html";
+          
+          window.location.href = "book.html";
         });
     
         let goto_issued_btn =document.querySelector("#goto-issue-book")
@@ -59,17 +56,17 @@ admin_log_out_btn.addEventListener("click",()=>
     });
    
     
-
+    
     let goto_author_btn =document.querySelector("#goto-author")
     goto_author_btn .addEventListener("click", () => {
         
-        window.location.href = "Author.html";
+      window.location.href = "Author.html";
     });
 
-
-
-
-
+    
+    
+    
+    
     
     
     
@@ -82,13 +79,38 @@ admin_log_out_btn.addEventListener("click",()=>
       heading.innerText = "Update Book Information";
       heading.style.textAlign = "center";
       
-      const booknameInput = createInputForUpdate('input', 'take-input', bookToUpdate.name, bookToUpdate.name,true);
-      const bookpriceInput = createInputForUpdate('input', 'take-input', bookToUpdate.price, bookToUpdate.price,true);
+  
+      
+      let inputObject1={
+        type:'input',
+        className:'take-input',
+        placeholder:bookToUpdate.name,
+        required:true
+      }
+      let inputObject2={
+        type:'input',
+        className:'take-input',
+        placeholder:bookToUpdate.price,
+        required:true
+      }
+      const booknameInput = createInput(inputObject1);
+      const bookpriceInput = createInput(inputObject2);
       bookpriceInput.type = 'number';
       
-      const bookcategoryInput = createSelectForUpdate('take-input', categories, bookToUpdate.category, bookToUpdate.category,true);
-      alert("pppppppp");
-      const bookAuthorInput = createSelectForUpdate('take-input', authors.map(author => author.name), bookToUpdate.author, bookToUpdate.author,true);
+      let selectorObject={
+        className:'take-input',
+        options:categories,
+        required:true
+      }
+      const bookcategoryInput = createSelect( selectorObject);
+    
+      
+      let selectorObjectforAuthor={
+        className:'take-input',
+        options: authors.map(author => author.name),
+        required:true
+      }
+      const bookAuthorInput = createSelect( selectorObjectforAuthor);
       
       const submit_form_btn = document.createElement('button');
       submit_form_btn.textContent = "Update Book";
@@ -113,7 +135,7 @@ admin_log_out_btn.addEventListener("click",()=>
       
     
       // let submit_form_btn = document.querySelector("#submit_form_btn");
-      input_addBook_form.addEventListener('submit', function(event) {
+      input_form.addEventListener('submit', function(event) {
     event.preventDefault();
     bookToUpdate.name = booknameInput.value;
     bookToUpdate.category = bookcategoryInput.value;
@@ -143,19 +165,47 @@ admin_log_out_btn.addEventListener("click",()=>
       const input_addBook_form = document.querySelector("#add-book-form");
       input_addBook_form.style.display = "block";
       input_addBook_form.innerHTML = "";
-    
-   
       
       const heading = document.createElement('h1');
       heading.innerText = "Add New Book";
       heading.style.textAlign = "center";
     
-      const booknameInput = createInputForAddBook('input', 'take-input', 'Enter Name', true);
-      const bookpriceInput = createInputForAddBook('input', 'take-input', 'Enter Price', true);
+      
+      let inputObject1={
+        type:'input',
+        className:'take-input',
+        placeholder:'Enter Name',
+        required:true
+      }
+
+      const booknameInput = createInput(inputObject1);
+       
+      let inputObject2={
+        type:'input',
+        className:'take-input',
+        placeholder:'Enter Price',
+        required:true
+      }
+
+      const bookpriceInput = createInput(inputObject2);
       bookpriceInput.type = 'number';
     
-      const bookcategoryInput = createSelectForAddBook('take-input', categories, true);
-      const bookAuthorInput = createSelectForAddBook('take-input', authors.map(author => author.name), true);
+      let selectorObject={
+        className:'take-input',
+        options:categories,
+        required:true
+      }
+
+      const bookcategoryInput = createSelect(selectorObject);
+
+      let selectorObjectforAuthor={
+        className:'take-input',
+        options: authors.map(author => author.name),
+        required:true
+      }
+
+
+      const bookAuthorInput = createSelect(selectorObjectforAuthor);
     
       const submit_book_btn = document.createElement('button');
       submit_book_btn.textContent = "Submit Book";

@@ -4,7 +4,7 @@ import {
   books, 
   categories, 
   authors,
-  createInputForAddAuthor,
+  createInput,
 } from './source.js';
 
 
@@ -81,12 +81,26 @@ admin_log_out_btn.addEventListener("click",()=>
             let heading = document.createElement('h1');
             heading.innerText="Add New Author";
             heading.style.textAlign="center";
+
+
+            let inputObject1={
+              type:'input',
+              className:'take-input',
+              placeholder:"Enter Name",
+              required:true
+            }
+            let authornameInput= createInput(inputObject1);
             
-            let authornameInput= createInputForAddAuthor ('input', "take-input", "Enter Name", true);
+            let inputObject2={
+              type:'input',
+              className:'take-input',
+              placeholder:"Enter Nationality",
+              required:true
+            }
 
            
 
-            let authornationalityInput = createInputForAddAuthor ('input', "take-input", "Enter Nationality", true);
+            let authornationalityInput = createInput (inputObject2);
         
 
           

@@ -7,7 +7,7 @@ import {
   books, 
   categories, 
   authors,
-  createInputForAddCategory,
+  createInput,
 } from './source.js';
 
 
@@ -22,7 +22,13 @@ function openAddCategoryForm() {
     heading.innerText="Add New Category";
     heading.style.textAlign="center";
     
-    let categorynameInput = createInputForAddCategory("input", "take-input", "Enter Name", true);
+    let inputObject1={
+      type:'input',
+      className:'take-input',
+      placeholder:"Enter Name",
+      required:true
+    }
+    let categorynameInput = createInput(inputObject1);
     
     
     
