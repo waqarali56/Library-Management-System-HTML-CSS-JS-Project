@@ -70,6 +70,94 @@ admin_log_out_btn.addEventListener("click",()=>
 
 
 
+
+
+
+          function openAddAuthorForm() {
+
+            let input_addAuthor_form = document.querySelector("#add-author-form");
+            input_addAuthor_form.style.display = "block";
+            
+            input_addAuthor_form.innerHTML="";
+            
+            let heading = document.createElement('h1');
+            heading.innerText="Add New Author";
+            heading.style.textAlign="center";
+            
+            let authornameInput = document.createElement('input');
+            authornameInput.className="take-input";
+            authornameInput.type = 'text';
+            authornameInput.required = true;
+            authornameInput.placeholder="Enter Name";
+
+
+            let authornationalityInput = document.createElement('input');
+            authornationalityInput.className="take-input";
+            authornationalityInput.type = 'text';
+            authornationalityInput.required = true;
+            authornationalityInput.placeholder="Enter Nationality";
+
+
+          
+          
+            
+            
+            let submit_author_btn = document.createElement('button');
+            submit_author_btn.textContent = "Submit Author";
+            submit_author_btn.id = "submit_author_btn";
+            
+            
+            
+            // Append input fields to form or wherever needed
+            input_addAuthor_form.append(heading);
+            input_addAuthor_form.append("Name");
+            input_addAuthor_form.append(authornameInput);
+            input_addAuthor_form.append("Nationality");
+            input_addAuthor_form.append(authornationalityInput);
+          
+            input_addAuthor_form.append(submit_author_btn);
+          
+            
+          
+          
+          
+            
+            
+            
+            // let submit_form_btn = document.querySelector("#submit_form_btn");
+            input_addAuthor_form.addEventListener('submit', function(event) {
+              event.preventDefault();
+              
+              
+              let newAuthor = {
+                name: authornameInput.value,
+                nationality: authornationalityInput.value
+                
+              };
+              
+              authors.push(newAuthor);
+              
+             
+                
+                
+              alert("Author added sucessfully");
+              input_addAuthor_form.style.display="none";
+              const Authortable = document.querySelector("#author-table");
+              Authortable.style.display='table';
+              let add_author_btn = document.querySelector("#add-author-btn");
+              add_author_btn.style.display='block';
+              
+              updateDisplay();
+              
+            });
+            // Return the original bookToUpdate object
+            
+          }
+        
+
+
+
+
         function deleteBook(name) {
             let index = authors.findIndex(author => author.name === name);
             if (index !== -1) {
@@ -126,6 +214,22 @@ admin_log_out_btn.addEventListener("click",()=>
                 authorTable.appendChild(authorRow);
               });
             }
+
+
+
+
+
+
+            let add_author_btn = document.querySelector("#add-author-btn");
+  
+            add_author_btn.addEventListener('click',()=>
+              {
+              const authorTable = document.querySelector("#author-table");
+              authorTable.style.display="none";
+              add_author_btn.style.display='none';
+           
+              openAddAuthorForm();
+            })
             
 
 

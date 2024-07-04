@@ -10,6 +10,75 @@ const categories = [
 ];
 
 
+
+
+function openAddCategoryForm() {
+
+    let input_addCategory_form = document.querySelector("#add-category-form");
+    input_addCategory_form.style.display = "block";
+    
+    input_addCategory_form.innerHTML="";
+    
+    let heading = document.createElement('h1');
+    heading.innerText="Add New Category";
+    heading.style.textAlign="center";
+    
+    let categorynameInput = document.createElement('input');
+    categorynameInput.className="take-input";
+    categorynameInput.type = 'text';
+    categorynameInput.required = true;
+    categorynameInput.placeholder="Enter Name";
+  
+  
+    
+    
+    let submit_category_btn = document.createElement('button');
+    submit_category_btn.textContent = "Submit Category";
+    submit_category_btn.id = "submit_category_btn";
+    
+    
+    
+    // Append input fields to form or wherever needed
+    input_addCategory_form.append(heading);
+    input_addCategory_form.append("Name");
+    input_addCategory_form.append(categorynameInput);
+  
+    input_addCategory_form.append(submit_category_btn);
+  
+    
+  
+  
+  
+    
+    
+    
+    // let submit_form_btn = document.querySelector("#submit_form_btn");
+    input_addCategory_form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+   
+      
+     
+        categories.push(categorynameInput.value);
+        
+      alert("Category added sucessfully");
+      input_addCategory_form.style.display="none";
+      const bookTable = document.querySelector("#category-table");
+      bookTable.style.display='table';
+      let add_category_btn = document.querySelector("#add-category-btn");
+      add_category_btn.style.display='block';
+      
+      updateDisplay();
+      
+    });
+    // Return the original bookToUpdate object
+    
+  }
+
+
+
+
+
 let admin_log_out_btn=document.querySelector("#admin-log-out-btn");
 
 admin_log_out_btn.addEventListener("click",()=>
@@ -116,6 +185,19 @@ admin_log_out_btn.addEventListener("click",()=>
                 categoryTable.appendChild(categoryRow);
               });
             }
+
+
+
+            let add_category_btn = document.querySelector("#add-category-btn");
+  
+            add_category_btn.addEventListener('click',()=>
+              {
+              const categoryTable = document.querySelector("#category-table");
+              categoryTable.style.display="none";
+              add_category_btn.style.display='none';
+           
+              openAddCategoryForm();
+            })
             
 
 
