@@ -126,7 +126,7 @@ export const books = [
         isbn: "789", 
         issBook: { 
             issueStatus: true, 
-            issueDate: "2020-05-22T15:45:00"  // Hard-assigned past date and time
+            issueDate: "2020-05-22T15:45:00"  
         }
     },
     { 
