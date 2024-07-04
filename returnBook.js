@@ -54,104 +54,7 @@ admin_log_out_btn.addEventListener("click",()=>
 
 
 
-
-
-
-
-    const books = [
-      { 
-          name: "OOP", 
-          category: "programming", 
-          price: 30, 
-          author: "Robert C. Martin", 
-          isbn: "123", 
-          issBook: { 
-              issueStatus: true, 
-              returnDate: "" 
-          }
-      },
-      { 
-          name: "Python", 
-          category: "AI", 
-          price: 36, 
-          author: "Stuart Russell", 
-          isbn: "234", 
-          issBook: { 
-              issueStatus: false, 
-              returnDate: "2020-05-20T12:00:00"  // Hard-assigned past date and time
-          }
-      },
-      { 
-          name: "React", 
-          category: "programming", 
-          price: 28, 
-          author: "Kirupa Chinnathambi", 
-          isbn: "890", 
-          issBook: { 
-              issueStatus: true, 
-              returnDate: "" 
-          }
-      },
-      { 
-          name: "JavaScript: The Good Parts", 
-          category: "programming", 
-          price: 25, 
-          author: "Douglas Crockford", 
-          isbn: "567", 
-          issBook: { 
-              issueStatus: false, 
-              returnDate: "2020-05-21T10:30:00"  // Hard-assigned past date and time
-          }
-      },
-      { 
-          name: "Clean Code", 
-          category: "programming", 
-          price: 32, 
-          author: "Robert C. Martin", 
-          isbn: "456", 
-          issBook: { 
-              issueStatus: true, 
-              returnDate: "" 
-          }
-      },
-      { 
-          name: "Artificial Intelligence: A Modern Approach", 
-          category: "AI", 
-          price: 40, 
-          author: "Peter Norvig", 
-          isbn: "789", 
-          issBook: { 
-              issueStatus: false, 
-              returnDate: "2020-05-22T15:45:00"  // Hard-assigned past date and time
-          }
-      },
-      { 
-          name: "Database Systems: The Complete Book", 
-          category: "Database", 
-          price: 38, 
-          author: "Hector Garcia-Molina", 
-          isbn: "321", 
-          issBook: { 
-              issueStatus: true, 
-              returnDate: "" 
-          }
-      },
-      { 
-          name: "The Pragmatic Programmer", 
-          category: "programming", 
-          price: 29, 
-          author: "Andrew Hunt", 
-          isbn: "654", 
-          issBook: { 
-              issueStatus: true, 
-              returnDate: "" 
-          }
-      }
-  ];
-  
- 
-  
-
+    import { books, categories, authors} from './source.js';
 
 
 
@@ -175,7 +78,7 @@ return_Book_Display();
 
   books.forEach(book => {
 
-    if(book.issBook.issueStatus===false)
+    if(book.issBook.issueStatus===true)                      // it also those books which are iussed  we just want to display
       {
       const bookRow = document.createElement('tr');
         
@@ -192,7 +95,7 @@ return_Book_Display();
       data3.innerText = book.price;
       data4.innerText = book.author;
       data5.innerText = book.isbn;
-      data6.innerText = book.issBook.returnDate;
+      data6.innerText = book.issBook.issueDate;        // it also those books which are iussed   // it also those books which are iussed    // it also those books which are iussed 
 
       bookRow.appendChild(data5);
       bookRow.appendChild(data1);

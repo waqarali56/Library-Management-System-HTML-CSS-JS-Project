@@ -1,4 +1,20 @@
 
+
+import { 
+  books, 
+  categories, 
+  authors,
+  createInputForAddAuthor,
+} from './source.js';
+
+
+
+
+
+
+
+
+
 let admin_log_out_btn=document.querySelector("#admin-log-out-btn");
 
 admin_log_out_btn.addEventListener("click",()=>
@@ -52,24 +68,6 @@ admin_log_out_btn.addEventListener("click",()=>
 
 
 
-        const authors = [
-            {
-              name: "William Shakespeare",
-              nationality: "English"
-            },
-            {
-              name: "Jane Austen",
-              nationality: "English"
-            },
-            {
-              name: "Leo Tolstoy",
-              nationality: "Russian"
-            }
-            
-          ];
-
-
-
 
 
 
@@ -84,45 +82,41 @@ admin_log_out_btn.addEventListener("click",()=>
             heading.innerText="Add New Author";
             heading.style.textAlign="center";
             
-            let authornameInput = document.createElement('input');
-            authornameInput.className="take-input";
-            authornameInput.type = 'text';
-            authornameInput.required = true;
-            authornameInput.placeholder="Enter Name";
+            let authornameInput= createInputForAddAuthor ('input', "take-input", "Enter Name", true);
 
+           
 
-            let authornationalityInput = document.createElement('input');
-            authornationalityInput.className="take-input";
-            authornationalityInput.type = 'text';
-            authornationalityInput.required = true;
-            authornationalityInput.placeholder="Enter Nationality";
-
+            let authornationalityInput = createInputForAddAuthor ('input', "take-input", "Enter Nationality", true);
+        
 
           
-          
+         
+            
             
             
             let submit_author_btn = document.createElement('button');
             submit_author_btn.textContent = "Submit Author";
             submit_author_btn.id = "submit_author_btn";
             
+
+            const elements = [
+              heading,
+              "Name", authornameInput,
+              authornationalityInput,
+              submit_author_btn
+            ];
+            
+            elements.forEach(el => {
+              if (typeof el === 'string') {
+                input_addAuthor_form.appendChild(document.createTextNode(el));
+              } else {
+                input_addAuthor_form.appendChild(el);
+              }
+            });
             
             
-            // Append input fields to form or wherever needed
-            input_addAuthor_form.append(heading);
-            input_addAuthor_form.append("Name");
-            input_addAuthor_form.append(authornameInput);
-            input_addAuthor_form.append("Nationality");
-            input_addAuthor_form.append(authornationalityInput);
           
-            input_addAuthor_form.append(submit_author_btn);
-          
-            
-          
-          
-          
-            
-            
+    
             
             // let submit_form_btn = document.querySelector("#submit_form_btn");
             input_addAuthor_form.addEventListener('submit', function(event) {

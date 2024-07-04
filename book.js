@@ -1,4 +1,21 @@
 
+
+
+
+import { 
+  books, 
+  categories, 
+  authors,
+  createInputForUpdate, 
+  createSelectForUpdate,
+  createInputForAddBook,
+  createSelectForAddBook 
+} from './source.js';
+
+
+
+
+
 let lastisbn=700;
 
 let admin_log_out_btn=document.querySelector("#admin-log-out-btn");
@@ -53,129 +70,56 @@ admin_log_out_btn.addEventListener("click",()=>
 
 
 
-
-        const authors = [
-          {
-            name: "William Shakespeare",
-            nationality: "English"
-          },
-          {
-            name: "Jane Austen",
-            nationality: "English"
-          },
-          {
-            name: "Leo Tolstoy",
-            nationality: "Russian"
-          }
-          
-        ];
-
-        const categories = [
-          
-          "Frontend Development",
-          "Backend Development",
-          "Data Management",
-          "Functional Programming",
-          "Object-Oriented Programming (OOP)",
-          "Security",
-          
-      ];
-
-
-        const books = [
-          { name: "OOP", category: "programming", price: 30, author: "Robert C. Martin", isbn: "123", issueStatus: false },
-          { name: "Python", category: "AI", price: 36, author: "Stuart Russell", isbn: "234", issueStatus: true },
-          { name: "React", category: "programming", price: 28, author: "Kirupa Chinnathambi", isbn: "890", issueStatus: false },
-          { name: "JavaScript: The Good Parts", category: "programming", price: 25, author: "Douglas Crockford", isbn: "567", issueStatus: true },
-          { name: "Clean Code", category: "programming", price: 32, author: "Robert C. Martin", isbn: "456", issueStatus: false },
-          { name: "Artificial Intelligence: A Modern Approach", category: "AI", price: 40, author: "Peter Norvig", isbn: "789", issueStatus: true },
-          { name: "Database Systems: The Complete Book", category: "Database", price: 38, author: "Hector Garcia-Molina", isbn: "321", issueStatus: false },
-          { name: "The Pragmatic Programmer", category: "programming", price: 29, author: "Andrew Hunt", isbn: "654", issueStatus: true }
-        ];
-
-
-
-
-
-function openUpdateForm(bookToUpdate) {
-  let input_form = document.querySelector("#update-book-information");
-  input_form.style.display = "block";
-
-  input_form.innerHTML="";
-
-  let heading = document.createElement('h1');
-  heading.innerText="Update Book Information";
-  heading.style.textAlign="center";
-
-  let booknameInput = document.createElement('input');
-  booknameInput.className="take-input";
-  booknameInput.type = 'text';
-  booknameInput.placeholder = bookToUpdate.name;
-  booknameInput.value=bookToUpdate.name;
-
-
-  let bookpriceInput = document.createElement('input');
-  bookpriceInput.className="take-input";
-  bookpriceInput.type = 'number';
-  bookpriceInput.placeholder = bookToUpdate.price;
-  bookpriceInput.value=bookToUpdate.price;
-
-
-  let bookcategoryInput = document.createElement('select');
-  bookcategoryInput.className="take-input";
-    // Create an option for each category 
-    categories.forEach(category => {
-      let option = document.createElement('option');
-      option.value = category // Set the value to the author's name
-      option.textContent = category// Set the text content of the option
-      bookcategoryInput.appendChild(option); // Append the option to the select element
-    });
-  bookcategoryInput.placeholder = bookToUpdate.category;
-  bookcategoryInput.value=bookToUpdate.category;
-
-
-
-  let bookAuthorInput = document.createElement('select');
-  bookAuthorInput.className="take-input";
-  // Create an option for each author
-  authors.forEach(author => {
-    let option = document.createElement('option');
-    option.value = author.name; // Set the value to the author's name
-    option.textContent = author.name; // Set the text content of the option
-    bookAuthorInput.appendChild(option); // Append the option to the select element
-  });
-  bookAuthorInput.placeholder = bookToUpdate.author;
-  bookAuthorInput.value=bookToUpdate.author;
-
-
-  
-  let submit_form_btn = document.createElement('button');
-  submit_form_btn.textContent = "Update Book";
-  submit_form_btn.id = "submit_form_btn";
+    
+    
+    
+    function openUpdateForm(bookToUpdate) {
+      const input_form = document.querySelector("#update-book-information");
+      input_form.style.display = "block";
+      input_form.innerHTML = "";
       
-
-  
-  // Append input fields to form or wherever needed
-  input_form.append(heading);
-  input_form.append("Name");
-  input_form.append(booknameInput);
-  input_form.append("Price");
-  input_form.append(bookpriceInput);
-  input_form.append("Category");
-  input_form.append(bookcategoryInput);
-  input_form.append("Author");
-  input_form.append(bookAuthorInput);
-  input_form.append(submit_form_btn);
-
-
-  // let submit_form_btn = document.querySelector("#submit_form_btn");
-  submit_form_btn.addEventListener('click', function(event) {
+      const heading = document.createElement('h1');
+      heading.innerText = "Update Book Information";
+      heading.style.textAlign = "center";
+      
+      const booknameInput = createInputForUpdate('input', 'take-input', bookToUpdate.name, bookToUpdate.name,true);
+      const bookpriceInput = createInputForUpdate('input', 'take-input', bookToUpdate.price, bookToUpdate.price,true);
+      bookpriceInput.type = 'number';
+      
+      const bookcategoryInput = createSelectForUpdate('take-input', categories, bookToUpdate.category, bookToUpdate.category,true);
+      alert("pppppppp");
+      const bookAuthorInput = createSelectForUpdate('take-input', authors.map(author => author.name), bookToUpdate.author, bookToUpdate.author,true);
+      
+      const submit_form_btn = document.createElement('button');
+      submit_form_btn.textContent = "Update Book";
+      submit_form_btn.id = "submit_form_btn";
+      
+      const elements = [
+        heading,
+        "Name", booknameInput,
+        "Price", bookpriceInput,
+        "Category", bookcategoryInput,
+        "Author", bookAuthorInput,
+        submit_form_btn
+      ];
+    
+      elements.forEach(el => {
+        if (typeof el === 'string') {
+        input_form.appendChild(document.createTextNode(el));
+      } else {
+            input_form.appendChild(el);
+        }
+      });
+      
+    
+      // let submit_form_btn = document.querySelector("#submit_form_btn");
+      input_addBook_form.addEventListener('submit', function(event) {
     event.preventDefault();
     bookToUpdate.name = booknameInput.value;
     bookToUpdate.category = bookcategoryInput.value;
     bookToUpdate.price = bookpriceInput.value;
     bookToUpdate.author = bookAuthorInput.value;
-   
+    
 
     alert("book ubdated sucessfully");
     input_form.style.display="none";
@@ -187,89 +131,54 @@ function openUpdateForm(bookToUpdate) {
     updateDisplay();
 
   });
-  // Return the original bookToUpdate object
-  
-}
+
+    }
+    
+    
 
 
-
-
-function openAddBookForm() {
-
-  let input_addBook_form = document.querySelector("#add-book-form");
-  input_addBook_form.style.display = "block";
-  
-  input_addBook_form.innerHTML="";
-  
-  let heading = document.createElement('h1');
-  heading.innerText="Add New Book";
-  heading.style.textAlign="center";
-  
-  let booknameInput = document.createElement('input');
-  booknameInput.className="take-input";
-  booknameInput.type = 'text';
-  booknameInput.required = true;
-  booknameInput.placeholder="Enter Name"
-
-
-  let bookpriceInput = document.createElement('input');
-  bookpriceInput.className="take-input";
-  bookpriceInput.type = 'number';
-  bookpriceInput.placeholder="Enter Price"
-  bookpriceInput.required=true;
-
-
-  let bookcategoryInput = document.createElement('select');
-  bookcategoryInput.className="take-input";
-  // Create an option for each category 
-  categories.forEach(category => {
-    let option = document.createElement('option');
-    option.value = category // Set the value to the author's name
-    option.textContent = category// Set the text content of the option
-    bookcategoryInput.appendChild(option); // Append the option to the select element
-  });
-  bookcategoryInput.required=true;
-
-
-
-  let bookAuthorInput = document.createElement('select');
-  bookAuthorInput.className="take-input";
-  // Create an option for each author
-  authors.forEach(author => {
-    let option = document.createElement('option');
-    option.value = author.name; // Set the value to the author's name
-    option.textContent = author.name; // Set the text content of the option
-    bookAuthorInput.appendChild(option); // Append the option to the select element
-  });
-  bookAuthorInput.required=true;
-  
-  
-  
-  let submit_book_btn = document.createElement('button');
-  submit_book_btn.textContent = "Submit Book";
-  submit_book_btn.id = "submit_book_btn";
-  
-  
-  
-  // Append input fields to form or wherever needed
-  input_addBook_form.append(heading);
-  input_addBook_form.append("Name");
-  input_addBook_form.append(booknameInput);
-  input_addBook_form.append("Price");
-  input_addBook_form.append(bookpriceInput);
-  input_addBook_form.append("Category");
-  input_addBook_form.append(bookcategoryInput);
-  input_addBook_form.append("Author");
-  input_addBook_form.append(bookAuthorInput);
-  input_addBook_form.append(submit_book_btn);
-
-  
-
-
-
-  
-  
-  
+    
+    
+    function openAddBookForm() {
+      const input_addBook_form = document.querySelector("#add-book-form");
+      input_addBook_form.style.display = "block";
+      input_addBook_form.innerHTML = "";
+    
+   
+      
+      const heading = document.createElement('h1');
+      heading.innerText = "Add New Book";
+      heading.style.textAlign = "center";
+    
+      const booknameInput = createInputForAddBook('input', 'take-input', 'Enter Name', true);
+      const bookpriceInput = createInputForAddBook('input', 'take-input', 'Enter Price', true);
+      bookpriceInput.type = 'number';
+    
+      const bookcategoryInput = createSelectForAddBook('take-input', categories, true);
+      const bookAuthorInput = createSelectForAddBook('take-input', authors.map(author => author.name), true);
+    
+      const submit_book_btn = document.createElement('button');
+      submit_book_btn.textContent = "Submit Book";
+      submit_book_btn.id = "submit_book_btn";
+    
+      const elements = [
+        heading,
+        "Name", booknameInput,
+        "Price", bookpriceInput,
+        "Category", bookcategoryInput,
+        "Author", bookAuthorInput,
+        submit_book_btn
+      ];
+    
+      elements.forEach(el => {
+        if (typeof el === 'string') {
+          input_addBook_form.appendChild(document.createTextNode(el));
+        } else {
+          input_addBook_form.appendChild(el);
+        }
+    });
+    
+     
   // let submit_form_btn = document.querySelector("#submit_form_btn");
   input_addBook_form.addEventListener('submit', function(event) {
     event.preventDefault();
@@ -297,8 +206,13 @@ function openAddBookForm() {
     
   });
   // Return the original bookToUpdate object
-  
-}
+
+    }
+    
+
+
+
+
 
 
 

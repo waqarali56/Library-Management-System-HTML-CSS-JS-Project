@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard</title>
-    <link rel="stylesheet" href="admin_dashboard.css" />
+    <link rel="stylesheet" href="user_dashboard.css" />
 </head>
 <body>
     <header id="header">
@@ -17,7 +17,7 @@
 
         <div class="button-container">
             
-                <button id="admin-log-out-btn">Log Me Out</button>
+                <button id="user-log-out-btn">Log Me Out</button>
             
         </div>
            
@@ -28,18 +28,17 @@
           User Dashboard
        </div>
        <div class="button-container">
-          <button>
-            Dashboard
-          </button>
-          <button>
-            Books
-          </button>
-          <button>
-            Issued Books
-          </button>
-         
-
-       </div>
+        <button id="goto-dashboard">
+          Dashboard
+        </button>
+     
+        <button id="goto-book">
+          Books
+        </button>
+        <button id="goto-issue-book">
+          Issued Books
+        </button>
+      
     </nav>
 
     <main id="main">
@@ -49,14 +48,14 @@
 <div class="dashboard-container">
 
 
-    <button id="books-list">
+    <button id="books-list-user">
         <img class="pic-size" src="book.png" alt="user picture">
         <div>
             Book List
         </div>
     </button>
     
-    <button id="time-book-issued">
+    <button id="book-issued-user">
         <img class="pic-size" src="issue_book.png" alt="user picture">
         <div>
             Book Issued
@@ -128,7 +127,7 @@
 </footer>
    
 
-<script src="admin_dashboard.js">
+<script src="user_dashboard.js">
 </script>
 
 </body>
