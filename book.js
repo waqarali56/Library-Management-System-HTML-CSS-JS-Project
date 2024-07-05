@@ -383,8 +383,7 @@ function updateDisplay() {
             let add_book_btn = document.querySelector("#add-book");
                   add_book_btn.style.display='none';
            
-            const bookdetailDiv = document.querySelector("#book-detail");
-    bookdetailDiv.style.display="none";
+           
             
             updateBook(book.isbn);
             e.stopPropagation();
